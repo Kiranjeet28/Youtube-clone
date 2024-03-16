@@ -1,9 +1,9 @@
 import React from 'react'
-import Header from './Components/Header.jsx'
+import List from './Components/List.jsx'
 function App() {
 return (
 <div>
-  <Header/>
+  <List/>
 </div>
 )
 }
