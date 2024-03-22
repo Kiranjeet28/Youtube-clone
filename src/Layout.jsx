@@ -1,15 +1,17 @@
 import React from 'react'
 import Header from './Components/Header'
-import List from './Components/List'
 import { Outlet } from 'react-router-dom'
-
+import { LoadingVideo } from './Components/LoadingComponents'
+import SideBar from './Components/Home/Sidebar/SideBar'
 function Layout() {
   return (
-    <>
-    <Header/>
-   
+    <div>
+    <Header/> 
+     <LoadingVideo/>
     <Outlet />
-    </>
+    <SideBar/>
+
+    </div>
   )
 }
 
