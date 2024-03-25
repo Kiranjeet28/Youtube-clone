@@ -5,8 +5,8 @@ import { faHome, faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-i
 
 function List({pop}) {
     return (
-        <div className={`w-[40vh] overflow-y-auto absolute -left-64 ${pop} bg-white`}>
-            <ol class=" m-4 overflow-y-auto h-max md:h-[89vh] mt-2 ">
+        <div  className={`w-[40vh] overflow-y-auto absolute -left-[40vh] ${pop} bg-white`}>
+            <ol id='list' class=" m-4 overflow-y-auto h-max md:h-[89vh] mt-2 ">
                 <li class=" border-b border-gray-200 pt-2 pb-2">
                     <li class=" ">
                         <NavLink

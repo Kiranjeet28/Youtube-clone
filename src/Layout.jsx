@@ -1,15 +1,16 @@
 import React from 'react'
-import Header from './Components/Header'
+import Header from './Components/Header/Header'
 import { Outlet } from 'react-router-dom'
-import { LoadingVideo } from './Components/LoadingComponents'
-import SideBar from './Components/Home/Sidebar/SideBar'
+import { LoadingVideo } from './Components/LoadingPage/LoadingComponents'
+import SideBar from './Components/Sidebar/SideBar'
 function Layout() {
   return (
-    <div>
+    <div className="w-max h-max">
     <Header/> 
-     <LoadingVideo/>
-    <Outlet />
-    <SideBar/>
+    <div className='flex flex-row'>
+      <SideBar/>
+      <Outlet />
+    </div>
 
     </div>
   )
