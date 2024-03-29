@@ -9,6 +9,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout/>} >
       <Route path='' element= {<Home/>}  />
+      {/* <Route path='Search/:id' element={null} loader={SearchApi}/> */}
       <Route path='Short' element={null} />
       <Route path='Subscriptions' element={null} />
       <Route path='YourChannel' element={null} />

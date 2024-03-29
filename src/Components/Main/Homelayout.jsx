@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { LoadingVideo } from '../LoadingPage/LoadingComponents';
 import { formatDistanceToNow } from 'date-fns';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-
 import axios from 'axios';
 import { ApiKey } from '../../Api';
 import VideoDiv from '../ReuseComps/VideoDiv';
-
 
 function formatViewCount(viewCount) {
   if (viewCount >= 1000000) {
@@ -23,6 +19,7 @@ function Homelayout({ category }) {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [categoryLoading, setCategoryLoading] = useState(false);
+  const [videosLoading, setVideosLoading] = useState(false); // New state for video loading based on category change
 
   useEffect(() => {
     let apiUrl;
@@ -50,14 +47,20 @@ function Homelayout({ category }) {
         setVideos(videoData);
         setLoading(false);
         setCategoryLoading(false); // Stop loading for category change
+        setVideosLoading(false); // Stop loading for videos based on category change
       })
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
         setLoading(false);
         setCategoryLoading(false); // Stop loading for category change
+        setVideosLoading(false); // Stop loading for videos based on category change
       });
       
   }, [category]);
+
+  // Rest of the code remains the same
+
+
 
   const fetchChannelLogoAsync = async (channelId) => {
     try {

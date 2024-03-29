@@ -28,7 +28,7 @@ function Header() {
                 <div className="flex items-center">
                     <li className="md:ml-3 ml-1">
                         <div className="flex border-2  border-gray-150 rounded-full">
-                            <input className="text-xsm md:text-md w-30vw md:w-[50vw] rounded-l-full md:p-1" type="Search" placeholder='Search' />
+                            <input className="text-xsm md:text-md w-30vw md:w-[50vw] rounded-l-full md:p-1 " type="Search" placeholder='Search'  />
                             <div className='bg-gray-50 rounded-r-full w-12 md:w-16 flex items-center justify-center p-1 border-l border-gray-150'>
                                 <FontAwesomeIcon icon={faSearch} className='text-black text-[2.3vh] md:text-[3vh]' />
                             </div>
