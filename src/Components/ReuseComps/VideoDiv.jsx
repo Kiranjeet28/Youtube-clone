@@ -2,9 +2,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMicrophone, faArrowUp, faBell, faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import React from 'react'
-function VideoDiv({id,Thumbmail,ChannelPP,title,ChannelTitle,viewCount,UploadTime}) {
+
+function VideoDiv({Thumbmail,ChannelPP,title,ChannelTitle,viewCount,UploadTime}) {
 return (
-<a href={`https://www.youtube.com/embed/${id}`}>
+
                   <div className="flex flex-col m-3 w-[250px] " >
                     <img 
                       className="m-1 rounded-md h-[160px] w-[240px] hover:rounded-none"
@@ -36,7 +37,6 @@ return (
                       </div>
                     </div>
                   </div>
-                </a>
 )
 }
 export default VideoDiv

@@ -4,12 +4,19 @@ import './index.css'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import Layout from './Layout.jsx'
 import Home from './Components/Home/Home.jsx'
-
+import Search from './Components/Search/Search.jsx'
+import Watch from './Components/Watch/Watch.jsx'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout/>} >
       <Route path='' element= {<Home/>}  />
-      {/* <Route path='Search/:id' element={null} loader={SearchApi}/> */}
+      <Route path='/Search/:urlQuery' element={<Search/>}/>
+      <Route
+  path='/Watch/:id'
+  element={<Watch/>}
+/>
+
+
       <Route path='Short' element={null} />
       <Route path='Subscriptions' element={null} />
       <Route path='YourChannel' element={null} />

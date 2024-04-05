@@ -16,3 +16,7 @@ html{
   #catoLoading{
     scrollbar-width: none;
   }
+  input{
+    opacity: 1;
+    border: none;
+  }

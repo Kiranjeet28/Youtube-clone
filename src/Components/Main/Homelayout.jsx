@@ -81,7 +81,7 @@ function Homelayout({ category }) {
           return { ...video, profilePicture };
         })
       );
-      setVideos(updatedVideos);
+      
     };
     
     fetchData();

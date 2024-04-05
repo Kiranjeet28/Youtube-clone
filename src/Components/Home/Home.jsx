@@ -5,18 +5,11 @@ import { ApiKey } from '../../Api';
 import CatograyDiv from '../ReuseComps/CatograyDiv';
 import VideoDiv from '../ReuseComps/VideoDiv';
 import { formatDistanceToNow } from 'date-fns';
+import { NavLink } from 'react-router-dom';
+import { formatViewCount } from '../Functions/ViewCount';
 
-function formatViewCount(viewCount) {
-  if (viewCount >= 1000000) {
-    return (viewCount / 1000000).toFixed(1) + 'M';
-  } else if (viewCount >= 1000) {
-    return (viewCount / 1000).toFixed(1) + 'k';
-  } else {
-    return viewCount;
-  }
-}
 
-function Home() {
+function Home({width}) {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState(null); // Corrected typo in state variable name
@@ -51,6 +44,9 @@ function Home() {
       });
   }, [category]);
 
+  
+ 
+
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -74,17 +70,21 @@ function Home() {
     fetchCategories();
   }, []);
 
-  const clickHandler = useCallback((category) => {
-    setCategory(category);
+  const clickHandler = useCallback((clickedCategory) => {
+    console.log("Clicked category:", clickedCategory);
+    setCategory(clickedCategory.id); // Setting category ID as state
   }, []);
 
+ 
+
+
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col '>
       <div>
         {loading ? (
           <LoadingCato/>
         ) : (
-          <div className='w-[90vw] overflow-hidden scrollbar-hide'>
+          <div className={`overflow-hidden scrollbar-hide ${width ? `w-[${width}]` : `w-[90vw]`} absolute mt-[6vh]`}>
             <ul id="cato" className='flex flex-row m-4 overflow-x-auto scroll-smooth cursor-pointer scrollbar-hide whitespace-nowrap'>
               {categories.length > 0 ? (
                 categories.map((category) => (
@@ -96,7 +96,7 @@ function Home() {
                   />
                 ))
               ) : (
-                <li>No categories available</li>
+                null
               )}
             </ul>
           </div>
@@ -107,24 +107,25 @@ function Home() {
           <LoadingVideo />
         ) : videos.length > 0 ? (
           <div>
-            <ul className="flex flex-wrap w-[90vw] md:justify-between justify-center">
+            <ul className={`flex flex-wrap ${width ? `w-${width}` : `w-[90vw]`} md:justify-between justify-center mt-[12vh]`}>
               {videos.map(video => (
+                <NavLink to={`/Watch/${video.id}`}>
                 <li key={video.id}>
                   <VideoDiv
                     id={video.id}
                     Thumbmail={video.snippet.thumbnails.default.url}
-                    ChannelPP={video.profilePicture} // Where is profilePicture coming from?
                     title={video.snippet.title}
                     ChannelTitle={video.snippet.channelTitle}
                     viewCount={formatViewCount(video.statistics.viewCount)}
                     UploadTime={formatDistanceToNow(new Date(video.snippet.publishedAt), { addSuffix: true })}
                   />
                 </li>
+                </NavLink>
               ))}
             </ul>
           </div>
         ) : (
-          <p>No videos found.</p>
+         null
         )}
       </div>
     </div>
