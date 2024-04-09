@@ -96,8 +96,6 @@ const VideoCallApp = () => {
         await handleAnswer(message.answer);
       } else if (message.type === 'iceCandidate') {
         await handleIceCandidate(message.candidate);
-      } else if (message.type === 'joinedCall') {
-        showNotification('Someone joined the call!');
       }
     };
 
@@ -107,18 +105,6 @@ const VideoCallApp = () => {
       }
     };
   }, []);
-
-  const showNotification = (message) => {
-    if ('Notification' in window && Notification.permission === 'granted') {
-      new Notification(message);
-    } else if ('Notification' in window && Notification.permission !== 'denied') {
-      Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-          new Notification(message);
-        }
-      });
-    }
-  };
 
   const startScreenSharing = async () => {
     try {
