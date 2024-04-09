@@ -6,6 +6,7 @@ import Layout from './Layout.jsx'
 import Home from './Components/Home/Home.jsx'
 import Search from './Components/Search/Search.jsx'
 import Watch from './Components/Watch/Watch.jsx'
+import { BrowserRouter } from 'react-router-dom';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout/>} >
@@ -39,7 +40,8 @@ const router = createBrowserRouter(
       <Route path='YouTubeKids' element={null} />
 
     </Route>
-  )
+  ),
+  { basename: '/Youtube-clone' }
 )
 
 ReactDOM.createRoot(document.getElementById('root')).render(
