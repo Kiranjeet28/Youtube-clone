@@ -4,6 +4,7 @@ import { ApiKey } from '../../Api';
 import Desc from '../ReuseComps/watch/Desc';
 import PlayVideo from '../ReuseComps/watch/PlayVideo';
 import Home from '../Home/Home';
+import Comments from '../ReuseComps/watch/Comments';
 
 function Watch() {
     const { id } = useParams(); // Accessing videoId from params
@@ -24,7 +25,7 @@ function Watch() {
                     id: data.items[0].id,
                     snippet: data.items[0].snippet,
                     statistics: data.items[0].statistics,
-                    channelId: data.items[0].snippet.channelId
+                    channelId: data.items[0].snippet.channelId,
                 };
                 setData(videoData);
             })
@@ -34,9 +35,9 @@ function Watch() {
     }, [id]);
 
     return (
-        <div className='absoult '>
+        <div className='absoult  '>
             {data && (
-                <div className='flex flex-row '>
+                <div className='flex flex-row justify-center '>
                     <div className='mt-[4vh]'>
                         <PlayVideo videoId={id} />
                         <Desc
@@ -48,9 +49,14 @@ function Watch() {
                             timeAgo={data.snippet.publishedAt}
                             desc={data.snippet.description}
                         />
+                        <Comments 
+                        videoId={id}
+                        countOfComment = {data.statistics.commentCount}
+                        />
                     </div>
                     <div className=''>
-                        <Home width={"20vw"} />
+                        <Home width={"20"}
+                         />
                     </div>
                 </div>
             )}

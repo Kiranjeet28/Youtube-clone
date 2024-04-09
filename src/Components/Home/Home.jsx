@@ -2,8 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { LoadingCato, LoadingVideo } from '../LoadingPage/LoadingComponents'; // Import LoadingCato and LoadingVideo
 import axios from 'axios';
 import { ApiKey } from '../../Api';
-import CatograyDiv from '../ReuseComps/CatograyDiv';
-import VideoDiv from '../ReuseComps/VideoDiv';
+import CatograyDiv from '../ReuseComps/HomeComp/CatograyDiv';
+import VideoDiv from '../ReuseComps/HomeComp/VideoDiv';
 import { formatDistanceToNow } from 'date-fns';
 import { NavLink } from 'react-router-dom';
 import { formatViewCount } from '../Functions/ViewCount';
@@ -84,7 +84,7 @@ function Home({width}) {
         {loading ? (
           <LoadingCato/>
         ) : (
-          <div className={`overflow-hidden scrollbar-hide ${width ? `w-[${width}]` : `w-[90vw]`} absolute mt-[6vh]`}>
+          <div className={`overflow-hidden scrollbar-hide ${width ? `w-[20vw]` : `w-[90vw]`} absolute mt-[6vh]`}>
             <ul id="cato" className='flex flex-row m-4 overflow-x-auto scroll-smooth cursor-pointer scrollbar-hide whitespace-nowrap'>
               {categories.length > 0 ? (
                 categories.map((category) => (
@@ -107,7 +107,7 @@ function Home({width}) {
           <LoadingVideo />
         ) : videos.length > 0 ? (
           <div>
-            <ul className={`flex flex-wrap ${width ? `w-${width}` : `w-[90vw]`} md:justify-between justify-center mt-[12vh]`}>
+            <ul className={`flex flex-wrap ${width ? `w-[250px]` : `w-[90vw]`} md:justify-between justify-center mt-[12vh]`}>
               {videos.map(video => (
                 <NavLink to={`/Watch/${video.id}`}>
                 <li key={video.id}>

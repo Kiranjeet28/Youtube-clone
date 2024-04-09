@@ -1,4 +1,3 @@
-import DP from "../../assets/DP.jpg"
 export function LoadingVideo(){
     return(
       <div className="flex flex-wrap w-[90vw] md:justify-between justify-center">

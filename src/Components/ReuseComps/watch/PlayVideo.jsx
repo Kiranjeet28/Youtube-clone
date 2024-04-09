@@ -1,7 +1,6 @@
 import React from 'react';
 
 function PlayVideo({ videoId }) {
-   console.log(videoId)
     return (
         <div className='m-[4vh]'>
         {videoId && (

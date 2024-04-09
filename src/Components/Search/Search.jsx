@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { LoadingVideo } from '../LoadingPage/LoadingComponents'; 
 import { ApiKey } from '../../Api';
 import axios from 'axios';
-import VideoDiv from '../ReuseComps/VideoDiv';
+import VideoDiv from '../ReuseComps/HomeComp/VideoDiv';
 import { NavLink, useParams } from 'react-router-dom';
 import { formatDistanceToNow } from 'date-fns';
 
@@ -47,7 +47,7 @@ function Search() {
                     <LoadingVideo />
                 ) : videos.length > 0 ? (
                     <div>
-                        <ul className="flex flex-wrap w-[90vw] md:justify-between justify-center">
+                        <ul className="flex flex-wrap w-[90vw] md:justify-between justify-center mt-[10vh]">
                             {videos.map(video => (
                                 <li key={video.id}>
                                     <VideoDiv

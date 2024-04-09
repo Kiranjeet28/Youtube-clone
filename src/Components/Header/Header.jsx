@@ -2,31 +2,95 @@ import React, { useState, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMicrophone, faArrowUp, faBell, faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
-import List from '../List/List';
-import { ApiKey } from '../../Api';
 import axios from 'axios';
-import SugSearch from '../ReuseComps/SugSearch';
+import SugSearch from '../ReuseComps/HomeComp/SugSearch';
 import { NavLink } from 'react-router-dom';
+import List from '../List/List'
+import { ApiKey } from '../../Api'; // Make sure to import the ApiKey from correct location
 
 function Header() {
     const [barOn, setBarOn] = useState(false);
-    const [query, setQuery] = useState('');
     const [suggestions, setSuggestions] = useState([]);
+    const [query, setQuery] = useState('');
     const [isInput, setIsInput] = useState(false);
 
-    // To Clear the field of Search by clicking the X
+    // Mic 
+    const [micInput, setMicInput] = useState(false);
+    const [isListening, setIsListening] = useState(false);
+
+    const toggleBar = () => {
+        setBarOn(!barOn);
+    };
+
+    const handleChange = (event) => {
+        const userInput = event.target.value;
+        setQuery(userInput);
+        if (userInput.length === 0) {
+            setIsInput(false);
+            setSuggestions([]);
+            return;
+        }
+        debouncedHandleChange(userInput);
+    };
+
     const clearFilled = () => {
         setQuery('');
-        setSuggestions([]); // Clear suggestions when input is empty
+        setSuggestions([]);
     };
 
-    // SetInputAsSug
     const setInputAsSug = (Sug) => {
-        console.log("Suggestion:", Sug);
-        setQuery(Sug); // Setting category ID as state
+        setQuery(Sug);
     };
 
-    // Debounce function
+    const setSugAsEmptyonClik = () => {
+        setSuggestions([]);
+        setQuery('');
+    };
+
+    const OpenMic = () => {
+        if (!micInput) {
+            setMicInput(true);
+            startListening();
+        } else {
+            setMicInput(false);
+            stopListening();
+        }
+    };
+
+    const startListening = () => {
+        setIsListening(true);
+        const recognition = window.webkitSpeechRecognition ? new window.webkitSpeechRecognition() : null;
+        if (!recognition) {
+            // Handle if speech recognition is not supported
+            return;
+        }
+        recognition.continuous = true;
+        recognition.interimResults = true;
+
+        recognition.onresult = event => {
+            let interimTranscript = '';
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+                const transcript = event.results[i][0].transcript;
+                if (event.results[i].isFinal) {
+                    setQuery(prevTranscript => prevTranscript + transcript);
+                } else {
+                    interimTranscript += transcript;
+                }
+            }
+        };
+
+        recognition.onend = () => {
+            setIsListening(false);
+        };
+
+        recognition.start();
+    };
+
+    const stopListening = () => {
+        setIsListening(false);
+        setMicInput(false);
+    };
+
     const debounce = (func, delay) => {
         let timer;
         return function (...args) {
@@ -35,7 +99,6 @@ function Header() {
         };
     };
 
-    // Debounced version of handleChange
     const debouncedHandleChange = useCallback(
         debounce(async (userInput) => {
             setIsInput(true);
@@ -52,28 +115,9 @@ function Header() {
             } catch (error) {
                 console.error('Error fetching suggestions:', error);
             }
-        }, 500), // Adjust delay as needed
+        }, 500),
         []
     );
-    const handleChange = (event) => {
-        const userInput = event.target.value;
-        setQuery(userInput);
-        if (userInput.length === 0) {
-            setIsInput(false);
-            setSuggestions([]); // Clear suggestions when input is empty
-            return;
-        }
-        debouncedHandleChange(userInput);
-    };
-
-    const setSugAsEmptyonClik = () => {
-        setSuggestions([]);
-        query('')
-    };
-
-    const toggleBar = () => {
-        setBarOn(!barOn);
-    };
 
     return (
         <div className="md:w-full fixed z-10 bg-white">
@@ -106,22 +150,22 @@ function Header() {
                                 <FontAwesomeIcon icon={faSearch} className='text-black text-[2.3vh] md:text-[3vh]' />
                             </NavLink>
                         </div>
-                        {query.length > 0 ?(
-                             <ul className='w-30vw md:w-[55vw] absolute top-[7.6vh]   bg-white h-max rounded-md'>
-                             {suggestions.map((item) => (
-                                 <SugSearch
-                                     key={item.id.videoId}
-                                     id={item.id.videoId}
-                                     titleVideo={item.snippet.title}
-                                     functions={() => setInputAsSug(item.snippet.title)} />
-                             ))}
-                         </ul>
-                        ):null}
-                       
+                        {query.length > 0 ? (
+                            <ul className='w-30vw md:w-[55vw] absolute top-[7.6vh]   bg-white h-max rounded-md'>
+                                {suggestions.map((item) => (
+                                    <SugSearch
+                                        key={item.id.videoId}
+                                        id={item.id.videoId}
+                                        titleVideo={item.snippet.title}
+                                        functions={() => setInputAsSug(item.snippet.title)} />
+                                ))}
+                            </ul>
+                        ) : null}
+
                     </li>
-                    <li className="md:ml-3 ml-2" >
+                    <li className="md:ml-3 ml-2">
                         <div className='bg-gray-200 rounded-full p-2 flex h-8 w-8 md:h-8 md:w-8 items-center justify-center'>
-                            <FontAwesomeIcon icon={faMicrophone} className='text-black text-[2.3vh] md:text-[3vh]' />
+                            <FontAwesomeIcon icon={faMicrophone} className='text-black text-[2.3vh] md:text-[3vh]' onClick={OpenMic} />
                         </div>
                     </li>
                 </div>
@@ -144,6 +188,16 @@ function Header() {
                 <div>
                     <List />
                 </div>
+            }
+
+            {/* for the Mic */}
+            {
+                micInput ? (<div className='p-[1vh] m-2 bg-blue-50 w-max absolute z-10 right-[13vh]'>
+                    <p className='absolute right-1 w-auto text-xs font-bold  ' onClick={OpenMic} >X</p>
+                    <button className='rounded-lg p-1 bg-red-400 text-white m-1' onClick={stopListening} disabled={!isListening}>
+                        Stop
+                    </button>
+                </div>) : null
             }
         </div>
     );

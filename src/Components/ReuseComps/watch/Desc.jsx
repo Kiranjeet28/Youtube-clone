@@ -50,7 +50,7 @@ function Desc({ Title, ProfilePhoto, ChannelName, Like, views, timeAgo, desc }) 
   }, [ProfilePhoto]);
 
   return (
-    <div className="md:w-[70vw] md:h-[60vh] w-[80vw] h-[30vh] m-[4vh] mt-[2vh] ">
+    <div className="md:w-[70vw] md:h-auto w-[80vw] h-[30vh] m-[4vh] mt-[2vh] ">
       <h1 className="text-[3vh] font-bold">{Title}</h1>
       <div className="flex flex-row m-[0.5vw] items-center">
         {ProfilePhoto ? (
