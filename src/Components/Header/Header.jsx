@@ -40,6 +40,7 @@ function Header() {
 
     const setInputAsSug = (Sug) => {
         setQuery(Sug);
+        setSuggestions([])
     };
 
     const setSugAsEmptyonClik = () => {
@@ -133,25 +134,25 @@ function Header() {
                         </div>
                     </li>
                 </div>
-                <div className="flex items-center">
-                    <li className="md:ml-3 ml-1">
+                <div className="flex items-center flex-grow">
+                    <li className="md:ml-3 ml-1 md:w-auto w-full">
                         <div className="flex border-2  border-gray-150 rounded-full">
                             <input
-                                className="text-xsm md:text-md w-30vw md:w-[50vw] rounded-l-full md:p-1 "
+                                className="text-xsm md:text-md w-full px-4 py-2 rounded-l-full md:p-1 "
                                 value={query}
                                 onChange={handleChange}
                                 type="text" placeholder='Search'
                             />
                             {query.length !== 0 && isInput ?
-                                <div onClick={clearFilled} className='md:visible invisible text-gray-500 absolute top-[2.5vh] md:left-[70vw] left-[50vw] flex justify-center items-center'>X</div> :
+                                <div onClick={clearFilled} className='md:visible invisible text-gray-500 absolute top-[50%] transform -translate-y-1/2 right-3 md:right-4 cursor-pointer'>X</div> :
                                 null}
                             {/* For the particular Click  */}
-                            <NavLink to={`/Search/${query}`} className='bg-gray-50 rounded-r-full w-12 md:w-16 flex items-center justify-center p-1 border-l border-gray-150' onClick={setSugAsEmptyonClik}>
+                            <NavLink to={`/Search/${query}`} onClick={clearFilled} className='bg-gray-50 rounded-r-full md:p-1 border-l border-gray-150'>
                                 <FontAwesomeIcon icon={faSearch} className='text-black text-[2.3vh] md:text-[3vh]' />
                             </NavLink>
                         </div>
                         {query.length > 0 ? (
-                            <ul className='w-30vw md:w-[55vw] absolute top-[7.6vh]   bg-white h-max rounded-md'>
+                            <ul className='md:w-auto w-full absolute top-[7.6vh]   bg-white h-max rounded-md'>
                                 {suggestions.map((item) => (
                                     <SugSearch
                                         key={item.id.videoId}
@@ -170,9 +171,12 @@ function Header() {
                     </li>
                 </div>
                 <div className="flex items-center">
-                    <li className="md:ml-3 ml-2 md:mr-2 mr-1 hidden md:block">
-                        <FontAwesomeIcon icon={faArrowUp} className='text-black text-[2.1vh] md:text-[3vh]' />
-                    </li>
+                <NavLink to={`/Lobby`}>
+                    <li className="md:ml-3 ml-2 md:mr-2 mr-1">
+                            <FontAwesomeIcon icon={faArrowUp} className='text-black text-[2.1vh] md:text-[3vh]' />
+                        </li>
+                </NavLink>
+                   
                     <li className="md:ml-3 ml-2 md:mr-2 mr-1">
                         <FontAwesomeIcon icon={faBell} className='text-black text-[2.1vh] md:text-[3vh]' />
                     </li>

@@ -48,6 +48,7 @@ function Watch() {
                             views={data.statistics.viewCount}
                             timeAgo={data.snippet.publishedAt}
                             desc={data.snippet.description}
+                            id = {id}
                         />
                         <Comments 
                         videoId={id}

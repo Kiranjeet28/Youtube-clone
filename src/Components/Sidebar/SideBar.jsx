@@ -5,7 +5,7 @@ import { faHome, faUser } from '@fortawesome/free-solid-svg-icons';
 
 export default function SideBar() {
     return (
-        <div className="w-20 h-[100vh] p-1 left-0 top-[8vh] sticky bg-white ">
+        <div className="w-20 h-[100vh] p-1 left-0 top-[8vh] sticky bg-white mt-10 ">
             <ol>
                 <li className=''>
                     <NavLink

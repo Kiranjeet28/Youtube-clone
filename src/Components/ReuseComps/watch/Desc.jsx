@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp, faThumbsDown, faShare, faVideo, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp, faThumbsDown, faVideo, faUser, faCopy } from '@fortawesome/free-solid-svg-icons';
 import { formatViewCount } from '../../Functions/ViewCount'; // Assuming this is imported correctly
 import {ApiPPChannel} from '../../ReuseComps/ApiCalls/ApiPPChannel'
 // Function to fetch profile photo URL
@@ -38,14 +38,21 @@ function TruncatedDescription({ desc }) {
   );
 }
 
-function Desc({ Title, ProfilePhoto, ChannelName, Like, views, timeAgo, desc }) {
+function Desc({ Title, ProfilePhoto, ChannelName, Like, views, timeAgo, desc, id }) {
   const [url, setUrl] = useState('');
+  const [copytext,setCopytext] =useState('copy the link ')
+
+  const copyPasswordToClipBoard = useCallback(()=>{
+    window.navigator.clipboard.writeText(id)
+    setCopytext("copied")
+  },[id]) 
 
   useEffect(() => {
     if (ProfilePhoto) {
       fetchProfilePhotoUrl(ProfilePhoto).then(photoUrl => {
         setUrl(photoUrl);
       });
+      setCopytext("copy the link ")
     }
   }, [ProfilePhoto]);
 
@@ -75,8 +82,9 @@ function Desc({ Title, ProfilePhoto, ChannelName, Like, views, timeAgo, desc }) 
           </div>
         </div>
         <div className="m-2">
-          <FontAwesomeIcon className="text-black text-[2.1vh] md:text-[3vh]" icon={faShare} />
-          <span>Share</span>
+          <input type="text" values={id} readOnly />
+          <FontAwesomeIcon  className="text-black text-[2.1vh] md:text-[3vh]"  icon={faCopy} onClick={copyPasswordToClipBoard}  />
+          <span>{copytext}</span>
         </div>
         <div className="m-2">
           <FontAwesomeIcon className="text-black text-[2.1vh] md:text-[3vh]" icon={faVideo} />
