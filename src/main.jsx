@@ -9,8 +9,11 @@ import Watch from './Components/Watch/Watch.jsx'
 import { SocketProvider } from './Components/Videoconfrig/Context/SocketProvider.jsx'
 import Lobby from './Components/Videoconfrig/Screen/Lobby.jsx'
 import Room from './Components/Videoconfrig/Screen/Room.jsx'
-import Chat from './Components/Videoconfrig/Screen/Chat.jsx'
-import WatchVideo from './Components/Videoconfrig/Screen/WatchVideo.jsx'
+import Signup from './Auth/ExternalComp/Signup.jsx'
+import { Provider } from 'react-redux'
+import store from './store/store.js'
+import Login from './Auth/ExternalComp/Login.jsx'
+
 const router = createBrowserRouter(
   createRoutesFromElements(
 
@@ -21,8 +24,10 @@ const router = createBrowserRouter(
         path='/Watch/:id'
         element={<Watch/>}
       />
+      <Route path='/Sign' element={<Signup/>}/>
       <Route path='/Lobby' element={<Lobby/>} />
       <Route path='/room/:roomId' element={<Room/>} />
+      <Route path = '/login' element = {<Login/>}/>
       <Route path='Short' element={null} />
       <Route path='Subscriptions' element={null} />
       <Route path='YourChannel' element={null} />
@@ -50,9 +55,11 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <Provider store={store}>
     <SocketProvider>
     <RouterProvider router={router} />
     </SocketProvider>
+    </Provider>
     
   </React.StrictMode>,
 )

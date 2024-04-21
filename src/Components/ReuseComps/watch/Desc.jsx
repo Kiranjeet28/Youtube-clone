@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faThumbsDown, faVideo, faUser, faCopy } from '@fortawesome/free-solid-svg-icons';
 import { formatViewCount } from '../../Functions/ViewCount'; // Assuming this is imported correctly
 import {ApiPPChannel} from '../../ReuseComps/ApiCalls/ApiPPChannel'
+import { NavLink } from 'react-router-dom';
 // Function to fetch profile photo URL
 const fetchProfilePhotoUrl = async (ProfilePhoto) => {
   try {
@@ -86,9 +87,12 @@ function Desc({ Title, ProfilePhoto, ChannelName, Like, views, timeAgo, desc, id
           <FontAwesomeIcon  className="text-black text-[2.1vh] md:text-[3vh]"  icon={faCopy} onClick={copyPasswordToClipBoard}  />
           <span>{copytext}</span>
         </div>
+        <NavLink to="/lobby" >
         <div className="m-2">
-          <FontAwesomeIcon className="text-black text-[2.1vh] md:text-[3vh]" icon={faVideo} />
+          <FontAwesomeIcon className="text-black text-[2.1vh] md:text-[3vh]"  icon={faVideo} />
         </div>
+        </NavLink>
+        
       </div>
 
       <div className="h-max rounded-md bg-gray-200">

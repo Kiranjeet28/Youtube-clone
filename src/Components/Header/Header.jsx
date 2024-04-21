@@ -7,6 +7,7 @@ import SugSearch from '../ReuseComps/HomeComp/SugSearch';
 import { NavLink } from 'react-router-dom';
 import List from '../List/List'
 import { ApiKey } from '../../Api'; // Make sure to import the ApiKey from correct location
+import { Logo } from '../../Auth';
 
 function Header() {
     const [barOn, setBarOn] = useState(false);
@@ -128,10 +129,7 @@ function Header() {
                         <FontAwesomeIcon icon={faBars} className='text-black text-[2.3vh] md:text-[3vh]' />
                     </li>
                     <li>
-                        <div className="flex items-center justify-center">
-                            <FontAwesomeIcon className='text-red-500 text-[2.5vh] md:text-[3vh]' icon={faYoutube} />
-                            <div className='flex items-center text-[2vh] md:text-[3vh] font-sans font-bold'> YouTube <sup className='md:visible invisible font-mono text-gray-500 md:text-[2vh] text-[1vh]'>IN</sup></div>
-                        </div>
+                       <Logo/>
                     </li>
                 </div>
                 <div className="flex items-center flex-grow">
@@ -180,9 +178,11 @@ function Header() {
                     <li className="md:ml-3 ml-2 md:mr-2 mr-1">
                         <FontAwesomeIcon icon={faBell} className='text-black text-[2.1vh] md:text-[3vh]' />
                     </li>
+                    <NavLink to ="/Sign">
                     <li className="md:ml-3 ml-2 ">
                         <FontAwesomeIcon icon={faUser} className='text-black text-[2.1vh] md:text-[3vh]' />
                     </li>
+                    </NavLink>
                 </div>
             </ol>
             {barOn ?
