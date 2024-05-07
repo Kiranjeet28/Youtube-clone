@@ -1,20 +1,18 @@
-import React from 'react'
-import Header from './Components/Header/Header'
-import { Outlet } from 'react-router-dom'
-import SideBar from './Components/Sidebar/SideBar'
+import Header from './Components/Header/Header';
+import { Outlet } from 'react-router-dom';
+import SideBar from './Components/Sidebar/SideBar';
+
 function Layout() {
-  return (
+ 
+
+  return( 
     <div className="w-90 h-90">
-    <Header/> 
-    <div className='flex flex-row'>
-      <SideBar/>
-      <Outlet />
-    </div>
-    
-    
-     
-    </div>
-  )
+      <Header />
+      <div className="flex flex-row">
+        <SideBar />
+        <Outlet />
+      </div>
+    </div>)
 }
 
-export default Layout
+export default Layout;

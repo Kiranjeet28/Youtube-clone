@@ -8,12 +8,12 @@ import { formatDistanceToNow } from 'date-fns';
 import { NavLink } from 'react-router-dom';
 import { formatViewCount } from '../Functions/ViewCount';
 
-
-function Home({width}) {
+function Home({ width }) {
   const [videos, setVideos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [category, setCategory] = useState(null); // Corrected typo in state variable name
-  const [categories, setCategories] = useState([]); // Initialize categories state
+  const [loadingVideos, setLoadingVideos] = useState(true);
+  const [loadingCategories, setLoadingCategories] = useState(true);
+  const [category, setCategory] = useState(null);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     let apiUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&maxResults=50&key=${ApiKey}`;
@@ -36,16 +36,13 @@ function Home({width}) {
           channelId: item.snippet.channelId
         }));
         setVideos(videoData);
-        setLoading(false);
+        setLoadingVideos(false);
       })
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
-        setLoading(false);
+        setLoadingVideos(false);
       });
   }, [category]);
-
-  
- 
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -60,72 +57,63 @@ function Home({width}) {
 
         const data = await response.json();
         setCategories(data.items);
-        setLoading(false);
+        setLoadingCategories(false);
       } catch (error) {
         console.error('Error fetching categories:', error);
-        setLoading(false);
+        setLoadingCategories(false);
       }
     };
 
     fetchCategories();
   }, []);
 
-  const clickHandler = useCallback((clickedCategory) => {
-    console.log("Clicked category:", clickedCategory);
-    setCategory(clickedCategory.id); // Setting category ID as state
+  const clickHandler = useCallback((clickedCategoryId) => {
+    console.log("Clicked category ID:", clickedCategoryId);
+    setCategory(clickedCategoryId);
   }, []);
-
- 
-
 
   return (
     <div className='flex flex-col '>
       <div>
-        {loading ? (
-          <LoadingCato/>
+        {loadingCategories ? (
+          <LoadingCato />
         ) : (
           <div className={`overflow-hidden scrollbar-hide ${width ? `w-[20vw]` : `w-[90vw]`} absolute mt-[6vh]`}>
             <ul id="cato" className='flex flex-row m-4 overflow-x-auto scroll-smooth cursor-pointer scrollbar-hide whitespace-nowrap'>
-              {categories.length > 0 ? (
-                categories.map((category) => (
-                  <CatograyDiv
-                    key={category.id} // Add key prop
-                    id={category.id}
-                    functions={() => clickHandler(category)} // Correct clickHandler usage
-                    title={category.snippet.title}
-                  />
-                ))
-              ) : (
-                null
-              )}
+              {categories.map((category) => (
+                <CatograyDiv
+                  key={category.id}
+                  id={category.id}
+                  functions={() => clickHandler(category.id)}
+                  title={category.snippet.title}
+                />
+              ))}
             </ul>
           </div>
         )}
       </div>
       <div>
-        {loading ? (
+        {loadingVideos ? (
           <LoadingVideo />
-        ) : videos.length > 0 ? (
+        ) : (
           <div>
             <ul className={`flex flex-wrap ${width ? `w-[250px]` : `w-[90vw]`} md:justify-between justify-center mt-[12vh]`}>
               {videos.map(video => (
-                <NavLink to={`/Watch/${video.id}`}>
-                <li key={video.id}>
-                  <VideoDiv
-                    id={video.id}
-                    Thumbmail={video.snippet.thumbnails.default.url}
-                    title={video.snippet.title}
-                    ChannelTitle={video.snippet.channelTitle}
-                    viewCount={formatViewCount(video.statistics.viewCount)}
-                    UploadTime={formatDistanceToNow(new Date(video.snippet.publishedAt), { addSuffix: true })}
-                  />
-                </li>
+                <NavLink key={video.id} to={`/Watch/${video.id}`}>
+                  <li>
+                    <VideoDiv
+                      id={video.id}
+                      Thumbmail={video.snippet.thumbnails.default.url}
+                      title={video.snippet.title}
+                      ChannelTitle={video.snippet.channelTitle}
+                      viewCount={formatViewCount(video.statistics.viewCount)}
+                      UploadTime={formatDistanceToNow(new Date(video.snippet.publishedAt), { addSuffix: true })}
+                    />
+                  </li>
                 </NavLink>
               ))}
             </ul>
           </div>
-        ) : (
-         null
         )}
       </div>
     </div>

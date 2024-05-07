@@ -9,3 +9,7 @@ export async function ApiPPChannel(channelId) {
     
     return data.items[0].snippet.thumbnails.default.url;
 }
+
+
+
+

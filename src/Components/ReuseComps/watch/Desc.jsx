@@ -1,10 +1,11 @@
 import React, { useState, useEffect,useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faThumbsDown, faVideo, faUser, faCopy } from '@fortawesome/free-solid-svg-icons';
-import { formatViewCount } from '../../Functions/ViewCount'; // Assuming this is imported correctly
+import { formatViewCount } from '../../Functions/ViewCount'; 
 import {ApiPPChannel} from '../../ReuseComps/ApiCalls/ApiPPChannel'
 import { NavLink } from 'react-router-dom';
-// Function to fetch profile photo URL
+import ButtonSubscribe from './ButtonSubscribe';
+
 const fetchProfilePhotoUrl = async (ProfilePhoto) => {
   try {
     // Assuming ApiPPChannel is a function to fetch the profile photo URL
@@ -70,7 +71,9 @@ function Desc({ Title, ProfilePhoto, ChannelName, Like, views, timeAgo, desc, id
         <div id="Channel">
           <h2 className="font-bold m-1 mr-5">{ChannelName}</h2>
         </div>
-        <button className="rounded-full h-max text-white p-1 pl-3 pr-3 text-xs font-bold bg-black">Subscribe</button>
+       <ButtonSubscribe
+       channel_Title = {Title}
+       urlProfile = {url}/>
 
         <div className="m-2">
           <div className="flex flex-row rounded-full text-black p-1 pl-3 pr-3 text-xs font-bold bg-gray-200 w-[7vw] justify-between ">

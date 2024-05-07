@@ -1,13 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMicrophone, faArrowUp, faBell, faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { faYoutube } from '@fortawesome/free-brands-svg-icons';
-import axios from 'axios';
 import SugSearch from '../ReuseComps/HomeComp/SugSearch';
 import { NavLink } from 'react-router-dom';
-import List from '../List/List'
-import { ApiKey } from '../../Api'; // Make sure to import the ApiKey from correct location
-import { Logo } from '../../Auth';
+import List from '../List/List';
+import { ApiKey } from '../../Api';
+import Logo from '../Logo';
 
 function Header() {
     const [barOn, setBarOn] = useState(false);
@@ -15,7 +13,6 @@ function Header() {
     const [query, setQuery] = useState('');
     const [isInput, setIsInput] = useState(false);
 
-    // Mic 
     const [micInput, setMicInput] = useState(false);
     const [isListening, setIsListening] = useState(false);
 
@@ -41,10 +38,10 @@ function Header() {
 
     const setInputAsSug = (Sug) => {
         setQuery(Sug);
-        setSuggestions([])
+        setSuggestions([]);
     };
 
-    const setSugAsEmptyonClik = () => {
+    const setSugAsEmptyOnClick = () => {
         setSuggestions([]);
         setQuery('');
     };
@@ -63,7 +60,7 @@ function Header() {
         setIsListening(true);
         const recognition = window.webkitSpeechRecognition ? new window.webkitSpeechRecognition() : null;
         if (!recognition) {
-            // Handle if speech recognition is not supported
+            console.error('Speech recognition is not supported.');
             return;
         }
         recognition.continuous = true;
@@ -144,7 +141,6 @@ function Header() {
                             {query.length !== 0 && isInput ?
                                 <div onClick={clearFilled} className='md:visible invisible text-gray-500 absolute top-[50%] transform -translate-y-1/2 right-3 md:right-4 cursor-pointer'>X</div> :
                                 null}
-                            {/* For the particular Click  */}
                             <NavLink to={`/Search/${query}`} onClick={clearFilled} className='bg-gray-50 rounded-r-full md:p-1 border-l border-gray-150'>
                                 <FontAwesomeIcon icon={faSearch} className='text-black text-[2.3vh] md:text-[3vh]' />
                             </NavLink>
@@ -178,7 +174,7 @@ function Header() {
                     <li className="md:ml-3 ml-2 md:mr-2 mr-1">
                         <FontAwesomeIcon icon={faBell} className='text-black text-[2.1vh] md:text-[3vh]' />
                     </li>
-                    <NavLink to ="/Sign">
+                    <NavLink to ="/MainRL">
                     <li className="md:ml-3 ml-2 ">
                         <FontAwesomeIcon icon={faUser} className='text-black text-[2.1vh] md:text-[3vh]' />
                     </li>
@@ -196,12 +192,14 @@ function Header() {
 
             {/* for the Mic */}
             {
-                micInput ? (<div className='p-[1vh] m-2 bg-blue-50 w-max absolute z-10 right-[13vh]'>
-                    <p className='absolute right-1 w-auto text-xs font-bold  ' onClick={OpenMic} >X</p>
-                    <button className='rounded-lg p-1 bg-red-400 text-white m-1' onClick={stopListening} disabled={!isListening}>
-                        Stop
-                    </button>
-                </div>) : null
+                micInput && (
+                    <div className='p-[1vh] m-2 bg-blue-50 w-max absolute z-10 right-[13vh]'>
+                        <p className='absolute right-1 w-auto text-xs font-bold' onClick={OpenMic} >X</p>
+                        <button className='rounded-lg p-1 bg-red-400 text-white m-1' onClick={stopListening} disabled={!isListening}>
+                            Stop
+                        </button>
+                    </div>
+                )
             }
         </div>
     );

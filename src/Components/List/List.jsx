@@ -6,19 +6,19 @@ import { faHome, faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-i
 function List({pop}) {
     return (
         <div  className={`w-[40vh] overflow-y-auto absolute -left-[40vh] ${pop} bg-white`}>
-            <ol id='list' class=" m-4 overflow-y-auto h-max md:h-[89vh] mt-2 ">
-                <li class=" border-b border-gray-200 pt-2 pb-2">
-                    <li class=" ">
+            <ol id='list' className=" m-4 overflow-y-auto h-max md:h-[89vh] mt-2 ">
+                <li className=" border-b border-gray-200 pt-2 pb-2">
+                   
                         <NavLink
                             to="/"
                             className={({ isActive }) =>
                                 `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                 `
                             } >
-                            <div class="ml-4">
+                            <div className="ml-4">
                             <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                             </div>
-                            <span class="p-2 font-mono ml-3  text-[16px]">Home</span>
+                            <span className="p-2 font-mono ml-3  text-[16px]">Home</span>
                         </NavLink>
                     </li>
                     <li>
@@ -28,10 +28,10 @@ function List({pop}) {
                                 `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                 `
                             } >
-                            <div class="ml-4">
+                            <div className="ml-4">
                             <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                             </div>
-                            <span class="p-2 font-mono ml-3  text-[16px]">Shorts</span>
+                            <span className="p-2 font-mono ml-3  text-[16px]">Shorts</span>
                         </NavLink>
                     </li>
                     <li>
@@ -41,18 +41,18 @@ function List({pop}) {
                                 `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                 `
                             } >
-                            <div class="ml-4">
+                            <div className="ml-4">
                             <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                             </div>
-                            <span class="p-2 font-mono ml-3  text-[16px]">Subscriptions</span>
+                            <span className="p-2 font-mono ml-3  text-[16px]">Subscriptions</span>
                         </NavLink>
                     </li>
            
-                </li>
-                <li class=" border-b border-gray-200 pt-2 pb-2">
-                        <li class="flex flex-row ml-[10px] items-center">
-                            <span class="p-2 font-mono  font-bold  text-[16px]">You</span>
-                            <FontAwesomeIcon  class="  text-xsm h-3 text-gray-500"  icon={faAngleRight}  />
+                <li className=" border-b border-gray-200 pt-2 pb-2">
+                    <ol>
+                        <li className="flex flex-row ml-[10px] items-center">
+                            <span className="p-2 font-mono  font-bold  text-[16px]">You</span>
+                            <FontAwesomeIcon  className="  text-xsm h-3 text-gray-500"  icon={faAngleRight}  />
                             
                         </li>
                         <li>
@@ -62,10 +62,10 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } > 
-                                <div class="ml-4">
+                                <div className="ml-4">
                                 <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">Your Channel</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">Your Channel</span>
                             </NavLink>
                         </li>
                         <li>
@@ -75,10 +75,10 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } >
-                                <div class="ml-4">
+                                <div className="ml-4">
                                 <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">History</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">History</span>
                             </NavLink>
                         </li>
                         <li>
@@ -88,10 +88,10 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } >
-                                <div class="ml-4">
+                                <div className="ml-4">
                                 <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">Your videos</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">Your videos</span>
                             </NavLink>
                         </li>
                         <li>
@@ -101,10 +101,10 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } >
-                                <div class="ml-4">
+                                <div className="ml-4">
                                 <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">Watch Later</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">Watch Later</span>
                             </NavLink>
                         </li>
                         <li>
@@ -114,21 +114,23 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } >
-                                <div class="ml-4">
-                                <FontAwesomeIcon class="  text-xsm h-3 text-gray-500"  icon={faAngleDown}   />
+                                <div className="ml-4">
+                                <FontAwesomeIcon className="  text-xsm h-3 text-gray-500"  icon={faAngleDown}   />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">Show more</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">Show more</span>
                             </NavLink>
                         </li>
+                    </ol>
                 </li>
-                <li class=" border-b border-gray-200 pt-2 pb-2">
-                     <li class="flex flex-row ml-[10px] items-center">
-                        <span class="p-2 font-mono  font-bold  text-[16px]">Subscriptions</span>
+                <li className=" border-b border-gray-200 pt-2 pb-2">
+                     <li className="flex flex-row ml-[10px] items-center">
+                        <span className="p-2 font-mono  font-bold  text-[16px]">Subscriptions</span>
                     </li>
                 </li>
-                <li class=" border-b border-gray-200 pt-2 pb-2">
-                     <li class="flex flex-row ml-[10px] items-center">
-                        <span class="p-2 font-mono  font-bold  text-[16px]">Explore</span>
+                <li className=" border-b border-gray-200 pt-2 pb-2">
+                    <ol>
+                     <li className="flex flex-row ml-[10px] items-center">
+                        <span className="p-2 font-mono  font-bold  text-[16px]">Explore</span>
                     </li>
                         <li>
                             <NavLink
@@ -137,10 +139,10 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } > 
-                                <div class="ml-4">
+                                <div className="ml-4">
                                 <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">Trending</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">Trending</span>
                             </NavLink>
                         </li>
                         <li>
@@ -150,10 +152,10 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } > 
-                                <div class="ml-4">
+                                <div className="ml-4">
                                 <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">Shopping</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">Shopping</span>
                             </NavLink>
                         </li>
                         <li>
@@ -163,10 +165,10 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } > 
-                                <div class="ml-4">
+                                <div className="ml-4">
                                 <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">Music</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">Music</span>
                             </NavLink>
                         </li>
                         <li>
@@ -176,10 +178,10 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } > 
-                                <div class="ml-4">
+                                <div className="ml-4">
                                 <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">Films</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">Films</span>
                             </NavLink>
                         </li>
                         <li>
@@ -189,10 +191,10 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } > 
-                                <div class="ml-4">
+                                <div className="ml-4">
                                 <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">Live</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">Live</span>
                             </NavLink>
                         </li>
                         <li>
@@ -202,10 +204,10 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } > 
-                                <div class="ml-4">
+                                <div className="ml-4">
                                 <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">Gaming</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">Gaming</span>
                             </NavLink>
                         </li>
                         <li>
@@ -215,10 +217,10 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } > 
-                                <div class="ml-4">
+                                <div className="ml-4">
                                 <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">News</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">News</span>
                             </NavLink>
                         </li>
                         <li>
@@ -228,10 +230,10 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } > 
-                                <div class="ml-4">
+                                <div className="ml-4">
                                 <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">Sport</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">Sport</span>
                             </NavLink>
                         </li>
                         <li>
@@ -241,10 +243,10 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } > 
-                                <div class="ml-4">
+                                <div className="ml-4">
                                 <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">Courses</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">Courses</span>
                             </NavLink>
                         </li>
                         <li>
@@ -254,10 +256,10 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } > 
-                                <div class="ml-4">
+                                <div className="ml-4">
                                 <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">Fashion & beauty</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">Fashion & beauty</span>
                             </NavLink>
                         </li>
                         <li>
@@ -267,19 +269,21 @@ function List({pop}) {
                                     `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                     `
                                 } > 
-                                <div class="ml-4">
+                                <div className="ml-4">
                                 <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                                 </div>
-                                <span class="p-2 font-mono ml-3  text-[16px]">Podcasts</span>
+                                <span className="p-2 font-mono ml-3  text-[16px]">Podcasts</span>
                             </NavLink>
                         </li>
+                    </ol>                        
                 </li>
-                <li class=" border-b border-gray-200 pt-2 pb-2">
-                    <li class="flex flex-row ml-[10px] items-center">
-                            <span class="p-2 font-mono  font-bold  text-[16px]">More From Youtube</span>
+                <li className=" border-b border-gray-200 pt-2 pb-2">
+                    <ol>
+                    <li className="flex flex-row ml-[10px] items-center">
+                            <span className="p-2 font-mono  font-bold  text-[16px]">More From Youtube</span>
                          
                         </li>
-                    <li class=" ">
+                    <li className=" ">
                         
                         <NavLink
                             to="/YouTubePremium"
@@ -287,10 +291,10 @@ function List({pop}) {
                                 `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                 `
                             } >
-                            <div class="ml-4">
+                            <div className="ml-4">
                             <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                             </div>
-                            <span class="p-2 font-mono ml-3  text-[16px]">YouTube Premium</span>
+                            <span className="p-2 font-mono ml-3  text-[16px]">YouTube Premium</span>
                         </NavLink>
                     </li>
                     <li>
@@ -300,10 +304,10 @@ function List({pop}) {
                                 `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                 `
                             } >
-                            <div class="ml-4">
+                            <div className="ml-4">
                             <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                             </div>
-                            <span class="p-2 font-mono ml-3  text-[16px]">YouTube Studio</span>
+                            <span className="p-2 font-mono ml-3  text-[16px]">YouTube Studio</span>
                         </NavLink>
                     </li>
                     <li>
@@ -313,10 +317,10 @@ function List({pop}) {
                                 `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                 `
                             } >
-                            <div class="ml-4">
+                            <div className="ml-4">
                             <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                             </div>
-                            <span class="p-2 font-mono ml-3  text-[16px]">YouTube Music</span>
+                            <span className="p-2 font-mono ml-3  text-[16px]">YouTube Music</span>
                         </NavLink>
                     </li>
                     <li>
@@ -326,26 +330,26 @@ function List({pop}) {
                                 `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                 `
                             } >
-                            <div class="ml-4">
+                            <div className="ml-4">
                             <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                             </div>
-                            <span class="p-2 font-mono ml-3  text-[16px]">YouTube Kids</span>
+                            <span className="p-2 font-mono ml-3  text-[16px]">YouTube Kids</span>
                         </NavLink>
                     </li>
-           
+                    </ol> 
                 </li>
-                <li class=" border-b border-gray-200 pt-2 pb-2">
-                    <li class=" ">
+                
+                <li className=" border-b border-gray-200 pt-2 pb-2">
                         <NavLink
                             to="/Setting"
                             className={({ isActive }) =>
                                 `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                 `
                             } >
-                            <div class="ml-4">
+                            <div className="ml-4">
                             <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                             </div>
-                            <span class="p-2 font-mono ml-3  text-[16px]">Settings</span>
+                            <span className="p-2 font-mono ml-3  text-[16px]">Settings</span>
                         </NavLink>
                     </li>
                     <li>
@@ -355,10 +359,10 @@ function List({pop}) {
                                 `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                 `
                             } >
-                            <div class="ml-4">
+                            <div className="ml-4">
                             <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                             </div>
-                            <span class="p-2 font-mono ml-3  text-[16px]">Report History</span>
+                            <span className="p-2 font-mono ml-3  text-[16px]">Report History</span>
                         </NavLink>
                     </li>
                     <li>
@@ -368,10 +372,10 @@ function List({pop}) {
                                 `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                 `
                             } >
-                            <div class="ml-4">
+                            <div className="ml-4">
                             <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                             </div>
-                            <span class="p-2 font-mono ml-3  text-[16px]">Help</span>
+                            <span className="p-2 font-mono ml-3  text-[16px]">Help</span>
                         </NavLink>
                     </li>
                     <li>
@@ -381,19 +385,18 @@ function List({pop}) {
                                 `flex rounded-md flex-row items-center justify-left hover:bg-gray-300 ${isActive ? "bg-gray-200" : ""} 
                                 `
                             } >
-                            <div class="ml-4">
+                            <div className="ml-4">
                             <FontAwesomeIcon fontSize={'2.6vh'}  icon={faHome} style={{color: "#000"}} />
                             </div>
-                            <span class="p-2 font-mono ml-3  text-[16px]">Send feedback</span>
+                            <span className="p-2 font-mono ml-3  text-[16px]">Send feedback</span>
                         </NavLink>
                     </li>
             
-                </li>
                 <li>
-                    <p class="text-sm text-black">
+                    <p className="text-sm text-black">
                         Kiranjeet Youtube Clone
                         <br/>
-                        <span class="text-gray-900 font-bold">kiranjeetkour144@gmail.com</span>
+                        <span className="text-gray-900 font-bold">kiranjeetkour144@gmail.com</span>
                         
                     </p>
                 </li>

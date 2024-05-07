@@ -48,7 +48,7 @@ export default function SideBar() {
                 </li>
                 <li className=''>
                     <NavLink
-                        to="/YourChannel"
+                        to="/MainRL"
                         className={({ isActive }) =>
                             `flex flex-col items-center justify-center pt-[15px] pb-[15px]  hover:rounded-md hover:bg-gray-200  rounded-md ${isActive ? "bg-gray-300" : ""} 
                             `

@@ -9,11 +9,12 @@ import Watch from './Components/Watch/Watch.jsx'
 import { SocketProvider } from './Components/Videoconfrig/Context/SocketProvider.jsx'
 import Lobby from './Components/Videoconfrig/Screen/Lobby.jsx'
 import Room from './Components/Videoconfrig/Screen/Room.jsx'
-import Signup from './Auth/ExternalComp/Signup.jsx'
-import { Provider } from 'react-redux'
-import store from './store/store.js'
-import Login from './Auth/ExternalComp/Login.jsx'
-
+import PrivateRoute from './PrivateRouter/PrivateRoute.jsx'
+import { AuthProvider } from './PrivateRouter/AuthContext.jsx'
+import Login from './Components/RegistorSign/Auth/Login.jsx'
+import Register from './Components/RegistorSign/Auth/Register.jsx'
+import MainRL from './Components/RegistorSign/MainRL.jsx'
+import Sub from './Components/SubList/Sub.jsx'
 const router = createBrowserRouter(
   createRoutesFromElements(
 
@@ -24,42 +25,25 @@ const router = createBrowserRouter(
         path='/Watch/:id'
         element={<Watch/>}
       />
-      <Route path='/Sign' element={<Signup/>}/>
+      <Route path='/Subscriptions' element={<Sub/>}/>
+      <Route path='/register' element={<Register/>}/>
+      <Route path='/Sign' element={<Login/>} />
+      <Route element={<PrivateRoute/>}>
       <Route path='/Lobby' element={<Lobby/>} />
       <Route path='/room/:roomId' element={<Room/>} />
-      <Route path = '/login' element = {<Login/>}/>
-      <Route path='Short' element={null} />
-      <Route path='Subscriptions' element={null} />
-      <Route path='YourChannel' element={null} />
-      <Route path='History' element={null} />
-      <Route path='YourVideo' element={null} />
-      <Route path='WatchLater' element={null} />
-      <Route path='Trending' element={null} />
-      <Route path='Shopping' element={null} />
-      <Route path='Music' element={null} />
-      <Route path='Films' element={null} />
-      <Route path='Live' element={null} />
-      <Route path='Gaming' element={null} />
-      <Route path='News' element={null} />
-      <Route path='Sport' element={null} />
-      <Route path='Courses' element={null} />
-      <Route path='Fashion & beauty' element={null} />
-      <Route path='YouTubePremium' element={null} />
-      <Route path='YouTubeStudio' element={null} />
-      <Route path='YouTubeMusic' element={null} />
-      <Route path='YouTubeKids' element={null} />
-
+      </Route>
+      <Route path='/MainRL' element={<MainRL/>}/>
     </Route>
   )
 )
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider store={store}>
     <SocketProvider>
+    <AuthProvider>
     <RouterProvider router={router} />
+    </AuthProvider>
     </SocketProvider>
-    </Provider>
     
   </React.StrictMode>,
 )

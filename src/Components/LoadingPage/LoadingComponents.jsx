@@ -1,6 +1,6 @@
 export function LoadingVideo(){
     return(
-      <div className="flex flex-wrap w-[90vw] md:justify-between justify-center">
+      <div className="flex flex-wrap w-[90vw] md:justify-between justify-center mt-20 ">
         <div className="flex flex-col m-3 w-[250px] ">
           <div className=" m-1 rounded-md h-[160px] w-[240px] hover:rounded-none bg-gray-200"></div>
         
@@ -119,7 +119,7 @@ export function LoadingVideo(){
 }
 export function LoadingCato(){
   return(
-      <ul id="catoLoading"  className='flex flex-row m-4 overflow-x-auto scroll-smooth cursor-pointer w-[90vw] '>
+      <ul id="catoLoading"  className='flex flex-row m-4 overflow-x-auto scroll-smooth cursor-pointer w-[90vw] top-10 absolute'>
       <li 
         className=' h-7  mr-1 ml-1 bg-gray-200 rounded-md flex items-center justify-center phover:bg-gray-300 w-[13vw] '>
       </li>
