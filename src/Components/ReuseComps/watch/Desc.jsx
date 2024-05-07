@@ -72,7 +72,7 @@ function Desc({ Title, ProfilePhoto, ChannelName, Like, views, timeAgo, desc, id
           <h2 className="font-bold m-1 mr-5">{ChannelName}</h2>
         </div>
        <ButtonSubscribe
-       channel_Title = {Title}
+       channel_Title = {ChannelName}
        urlProfile = {url}/>
 
         <div className="m-2">
