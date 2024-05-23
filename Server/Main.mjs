@@ -4,7 +4,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import SubModel from './Schema/Subscribe.js';
-
+import WatchedModel from './Schema/WatchedVideo.js'
 const app = express();
 const PORT = process.env.PORT || 5000;
 dotenv.config();
@@ -42,6 +42,7 @@ app.listen(PORT, () => {
     try {
       const newData = new model(req.body);
       const savedData = await newData.save();
+      console.log(res)
       res.status(201).json(savedData);
     } catch (error) {
       console.error('Error saving data:', error);
@@ -54,6 +55,11 @@ app.listen(PORT, () => {
     await handlePostRequest(SubModel, req, res);
   });
   
+// Route for adding Watched Video
+app.post('/postWatched', async (req, res) => {
+  await handlePostRequest(WatchedModel, req, res);
+});
+
   // Function to handle GET requests for retrieving subscribers
   const handleGetRequest = async (model, req, res) => {
     const { email } = req.query;
@@ -73,8 +79,33 @@ app.listen(PORT, () => {
     }
   };
   
+  
   // Route for getting subscribers
   app.get('/GetSubscribers', async (req, res) => {
     console.log("get it ")
     await handleGetRequest(SubModel, req, res);
+  });
+
+   // Route for getting WatchedVideos
+   // different method is required 
+
+    const GetWatchedVideo = async (model, req, res) => {
+    const { email } = req.query;
+    try {
+      const documents = await model.find({ email });
+      if (documents.length === 0) {
+        return res.status(404).json({ error: 'No documents found for the given email' });
+      }
+      // Extracting channelIds and urls from documents
+      const channelIds = documents.map(doc => doc.Channel_Id);
+      console.log(res)
+      return res.status(200).json({ channelIds});
+    } catch (error) {
+      console.error('Error:', error);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+
+   app.get('/GetWatchedChannels', async (req, res) => {
+    await GetWatchedVideo(WatchedModel, req, res);
   });

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faMicrophone, faArrowUp, faBell, faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faMicrophone, faVideo, faBell, faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
 import SugSearch from '../ReuseComps/HomeComp/SugSearch';
 import { NavLink } from 'react-router-dom';
 import List from '../List/List';
@@ -119,7 +119,7 @@ function Header() {
     );
 
     return (
-        <div className="md:w-full fixed z-10 bg-white">
+        <div className="md:w-full fixed z-10 bg-white w-[100vw]">
             <ol className="flex items-center md:justify-between pt-2">
                 <div className="flex items-center">
                     <li className="md:ml-2 ml-1 md:mr-2 hover:rounded-full p-2 md:hover:bg-gray-100" onClick={toggleBar}>
@@ -167,7 +167,7 @@ function Header() {
                 <div className="flex items-center">
                 <NavLink to={`/Lobby`}>
                     <li className="md:ml-3 ml-2 md:mr-2 mr-1">
-                            <FontAwesomeIcon icon={faArrowUp} className='text-black text-[2.1vh] md:text-[3vh]' />
+                            <FontAwesomeIcon icon={faVideo} className='text-black text-[2.1vh] md:text-[3vh]' />
                         </li>
                 </NavLink>
                    

@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const WatchedSchema = new mongoose.Schema({
     Channel_Id: {
-        type: Number,
+        type: String,
         required: true,
     },
     email: {

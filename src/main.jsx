@@ -15,6 +15,9 @@ import Login from './Components/RegistorSign/Auth/Login.jsx'
 import Register from './Components/RegistorSign/Auth/Register.jsx'
 import MainRL from './Components/RegistorSign/MainRL.jsx'
 import Sub from './Components/SubList/Sub.jsx'
+import HistoryUI from './Components/History/HistroyUI.jsx'
+import ListOfFav from './Components/Favourite/ListOfFav.jsx'
+
 const router = createBrowserRouter(
   createRoutesFromElements(
 
@@ -25,10 +28,12 @@ const router = createBrowserRouter(
         path='/Watch/:id'
         element={<Watch/>}
       />
-      <Route path='/Subscriptions' element={<Sub/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/Sign' element={<Login/>} />
       <Route element={<PrivateRoute/>}>
+      <Route path='/Subscriptions' element={<Sub/>}/>
+      <Route path='/History' element={<HistoryUI/>}/>
+      <Route path='/Favourite' element={<ListOfFav/>}/>
       <Route path='/Lobby' element={<Lobby/>} />
       <Route path='/room/:roomId' element={<Room/>} />
       </Route>
@@ -38,12 +43,11 @@ const router = createBrowserRouter(
 )
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  
     <SocketProvider>
     <AuthProvider>
     <RouterProvider router={router} />
     </AuthProvider>
     </SocketProvider>
     
-  </React.StrictMode>,
 )
