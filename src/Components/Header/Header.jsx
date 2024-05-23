@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faMicrophone, faVideo, faBell, faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faMicrophone, faVideo, faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
 import SugSearch from '../ReuseComps/HomeComp/SugSearch';
 import { NavLink } from 'react-router-dom';
 import List from '../List/List';
@@ -126,7 +126,7 @@ function Header() {
                         <FontAwesomeIcon icon={faBars} className='text-black text-[2.3vh] md:text-[3vh]' />
                     </li>
                     <li>
-                       <Logo/>
+                        <Logo />
                     </li>
                 </div>
                 <div className="flex items-center flex-grow">
@@ -165,19 +165,16 @@ function Header() {
                     </li>
                 </div>
                 <div className="flex items-center">
-                <NavLink to={`/Lobby`}>
-                    <li className="md:ml-3 ml-2 md:mr-2 mr-1">
+                    <NavLink to={`/Lobby`}>
+                        <li className="md:ml-3 ml-2 md:mr-2 mr-1">
                             <FontAwesomeIcon icon={faVideo} className='text-black text-[2.1vh] md:text-[3vh]' />
                         </li>
-                </NavLink>
-                   
-                    <li className="md:ml-3 ml-2 md:mr-2 mr-1">
-                        <FontAwesomeIcon icon={faBell} className='text-black text-[2.1vh] md:text-[3vh]' />
-                    </li>
-                    <NavLink to ="/MainRL">
-                    <li className="md:ml-3 ml-2 ">
-                        <FontAwesomeIcon icon={faUser} className='text-black text-[2.1vh] md:text-[3vh]' />
-                    </li>
+                    </NavLink>
+
+                    <NavLink to="/MainRL">
+                        <li className="md:ml-3 ml-2 ">
+                            <FontAwesomeIcon icon={faUser} className='text-black text-[2.1vh] md:text-[3vh]' />
+                        </li>
                     </NavLink>
                 </div>
             </ol>
