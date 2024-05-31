@@ -1,8 +1,25 @@
-# React + Vite
+🚀 Excited to share my latest full-stack project: a YouTube clone with an impressive tech stack! 🎥
+GitHub Link : https://lnkd.in/ggzXBCsA
+Built using:
+- React
+- Context API
+- MongoDB
+- Node.js
+- Express
+- WebSocket
+- Appwrite
+- TailwindCSS
+- OAuth
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Features:
+- Video categories
+- Like and comment on videos
+- Search functionality
+- User accounts with OAuth via Appwrite (sign-in & register)
+- Watch history tracking
+- Video subscriptions
+- AI analysis of watched videos to suggest favorite categories
+- Video call with chat feature
+- Share and watch videos together via shared links
+- Voice search functionality
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
